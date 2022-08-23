@@ -11,12 +11,12 @@ extension UIViewController {
     
     // Below func is used to show status bar.
     func setStatusBar() {
-        let statusBarSize = UIApplication.shared.statusBarFrame.size // deprecated but OK
-        let frame = CGRect(origin: .zero, size: statusBarSize)
-        let statusBarView = UIView(frame: frame)
-        statusBarView.backgroundColor = appColor
-        view.addSubview(statusBarView)
-    }
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithTransparentBackground() // to hide Navigation Bar Line also
+            navBarAppearance.backgroundColor = appColor
+            UINavigationBar.appearance().standardAppearance = navBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        }
     
     // Below func is used to show tab bar with images.
     func setTabBarImage(imageName: String, title: String) {
