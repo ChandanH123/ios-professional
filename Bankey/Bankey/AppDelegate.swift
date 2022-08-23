@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         onboardingContainerViewController.delegate = self
         dummyViewController.logoutDelegate = self
         
-        window?.rootViewController = mainViewController
+//        window?.rootViewController = mainViewController
+        window?.rootViewController = AccountSummaryViewController()
         mainViewController.selectedIndex = 2 // setting the tab that we want to display by default.
         
 //        window?.rootViewController = LoginViewController()
