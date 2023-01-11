@@ -7,12 +7,13 @@
 
 import Foundation
 
+// NSUserDefaults database where we store key-value pairs persistently.
 public class LocalState {
     private enum Keys: String {
         case hasOnboarded
     }
     
-    public static var hasOnboarded: Bool {
+    public static var hasOnboarded: Bool { // optional setter computed property.
     
         get {
             return UserDefaults.standard.bool(forKey: Keys.hasOnboarded.rawValue)

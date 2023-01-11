@@ -51,7 +51,7 @@ extension DummyViewController {
         ])
     }
     
-    @objc func logoutButtonTapped(_ sender: UIButton) {
+    @objc func logoutButtonTapped(_ sender: UIButton) { // @objc keyword enables us to interact with objective-c runtime.
         logoutDelegate?.didLogout()
     }
 }

@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func style() {
-        loginView.translatesAutoresizingMaskIntoConstraints = false
+        loginView.translatesAutoresizingMaskIntoConstraints = false // It takes any control or element of view in your viewController and makes it ready for auto layou, if you don't write this you'll not able to view anything.
         
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.configuration = .filled()
@@ -88,13 +88,13 @@ extension LoginViewController {
         //Constraints for Title.
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3),
+            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3), // 3 = 24pts.
         ])
                 
        //Constraints for Subtitle.
         NSLayoutConstraint.activate([
             subtitleLabel.widthAnchor.constraint(equalTo: loginView.widthAnchor),
-            loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3),
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3), // 3 = 24pts.
         ])
 
         
@@ -104,10 +104,17 @@ extension LoginViewController {
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             //Below line is for pin the subview to left or leading side from view.
-            loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            // loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1), // 1 = 8pts.
+            //or
+            //Below line is for pin the subview to left or leading side from view.
+            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            
             
             //Below line is for pin the subview to right or trailing side from view.
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1),
+            // view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1), // 1 = 8pts.
+            // or
+            //Below line is for pin the subview to right or trailing side from view.
+            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             
         ])
         
@@ -121,7 +128,7 @@ extension LoginViewController {
             signInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
 
             //Below line is for pin the subview below loginView with spacing 2.
-            signInButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2)
+            signInButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2) // 2 = 16pts.
         ])
         
         //Constraints for Error Label.
@@ -134,7 +141,7 @@ extension LoginViewController {
             errorMessageLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
 
             //Below line is for pin the subview below signInButton with spacing 2.
-            errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2)
+            errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2) // 2 = 16pts.
         ])
     }
     
@@ -157,12 +164,12 @@ extension LoginViewController {
             return
         }
         
-        if username.isEmpty || password.isEmpty {
-            configureView(withMessage: "Username & password cannot be blank!")
-            return
-        }
+//        if username.isEmpty || password.isEmpty {
+//            configureView(withMessage: "Username & password cannot be blank!")
+//            return
+//        }
         
-        if username == "Chandan" && password == "12345" {
+        if username == "" && password == "" {
             signInButton.configuration?.showsActivityIndicator = true
             delegate?.didLogin()
         }

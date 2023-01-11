@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let loginViewController = LoginViewController()
     let onboardingContainerViewController = OnboardingContainerViewController()
-    let dummyViewController = DummyViewController()
+//    let dummyViewController = DummyViewController()
     let mainViewController = MainViewController()
     
     
@@ -28,15 +28,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         loginViewController.delegate = self
         onboardingContainerViewController.delegate = self
-        dummyViewController.logoutDelegate = self
+        
+//        dummyViewController.logoutDelegate = self
         
 //        window?.rootViewController = mainViewController
-        window?.rootViewController = AccountSummaryViewController()
-        mainViewController.selectedIndex = 2 // setting the tab that we want to display by default.
+//        window?.rootViewController = AccountSummaryViewController()
+//        mainViewController.selectedIndex = 2 // setting the tab that we want to display by default.
         
 //        window?.rootViewController = LoginViewController()
 //        window?.rootViewController = OnboardingContainerViewController()
 //        window?.rootViewController = OnboardingViewController(heroImageName: "delorean", titleText: "Bankey is faster, easier to use, and has a brand new look and feel that will make you feel like you are back in 1989.")
+        
+        let vc = mainViewController
+        vc.setStatusBar()
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+        
+        window?.rootViewController = loginViewController
         
         return true
     }
@@ -49,8 +58,8 @@ extension AppDelegate: LoginViewControllerDelegate
     func didLogin() {
 //        print("foo - Did login")
 //        window?.rootViewController = onboardingContainerViewController
-        if LocalState.hasOnboarded {
-            setRootViewController(dummyViewController)
+        if LocalState.hasOnboarded {  // get computed property "hasOnboarded" into LocalState File.
+            setRootViewController(mainViewController)
         }
         else {
             setRootViewController(onboardingContainerViewController)
@@ -61,8 +70,8 @@ extension AppDelegate: LoginViewControllerDelegate
 extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
 //        print("foo - Did finish onboarding")
-        LocalState.hasOnboarded = true
-        setRootViewController(dummyViewController)
+        LocalState.hasOnboarded = true // set computed property "hasOnboarded" into LocalState file.
+        setRootViewController(mainViewController)
     }
     
 }

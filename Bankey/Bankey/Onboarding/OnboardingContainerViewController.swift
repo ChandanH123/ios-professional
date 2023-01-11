@@ -20,7 +20,7 @@ class OnboardingContainerViewController: UIViewController {
     weak var delegate: OnboardingContainerViewControllerDelegate?
     
     var currentVC: UIViewController {
-        didSet {
+        didSet { // It is used when we want run a piece of code after updating or assigning the new value to the property, It calls after willSet.
             guard let index = pages.firstIndex(of: currentVC) else { return }
             nextButton.isHidden = index == pages.count - 1 // hide if on last page
             backButton.isHidden = index == 0
@@ -50,7 +50,8 @@ class OnboardingContainerViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) { // this means how storyboards get serialized into UI View Controllers, It's a part of UIViewController and a required constructor and we need to implement when we building out the view controllers programmitically, It is useless just because we are not using storyboards here but we need to implement to make the swift compiler happy.
+        
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -65,9 +66,10 @@ class OnboardingContainerViewController: UIViewController {
     private func setup() {
         view.backgroundColor = .systemPurple
         
+        // below 3 lines or steps are used to add a child view controllers to a parent view controller.
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
-        pageViewController.didMove(toParent: self)
+        pageViewController.didMove(toParent: self) // this line hooks up all the UIViewController eventing such as viewDidLoad, viewWillAppear, all the life cycle things happen.
         
         pageViewController.dataSource = self
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +81,7 @@ class OnboardingContainerViewController: UIViewController {
             view.bottomAnchor.constraint(equalTo: pageViewController.view.bottomAnchor),
         ])
         
-        pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
+        pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil) // setting the view controller for page view controller.
         currentVC = pages.first!
     }
     
@@ -137,22 +139,24 @@ class OnboardingContainerViewController: UIViewController {
 // MARK: - UIPageViewControllerDataSource
 extension OnboardingContainerViewController: UIPageViewControllerDataSource {
 
+    // below func means what should be view controller before when they swipe.
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return getPreviousViewController(from: viewController)
     }
 
+    // below func means what should be view controller after when they swipe.
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return getNextViewController(from: viewController)
     }
 
     private func getPreviousViewController(from viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index - 1 >= 0 else { return nil }
+        guard let index = pages.firstIndex(of: viewController), index - 1 >= 0 else { return nil } // It is checking that index should always be greater than equal to zero.
         currentVC = pages[index - 1]
         return pages[index - 1]
     }
 
     private func getNextViewController(from viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { return nil }
+        guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { return nil } // It is checking that index should always be less than to page.count.
         currentVC = pages[index + 1]
         return pages[index + 1]
     }

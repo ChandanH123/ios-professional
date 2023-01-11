@@ -29,7 +29,7 @@ class MainViewController: UITabBarController {
         let moneyNC = UINavigationController(rootViewController: moneyVC) // this is used for navigating the view.
         let moreNC = UINavigationController(rootViewController: moreVC) // this is used for navigating the view.
         
-        summaryNC.navigationBar.barTintColor = appColor // this used to set the navigation bar tint color.
+        summaryNC.navigationBar.barTintColor = .systemRed // this used to set the navigation bar tint color.
         hideNavigationBarLine(summaryNC.navigationBar) // this is used to hide the navigation bar line.
         
         let tabBarList = [summaryNC, moneyNC, moreNC]
@@ -38,6 +38,7 @@ class MainViewController: UITabBarController {
         
     }
     
+    // below function is used to remove the 1px navigation bar line.
     private func hideNavigationBarLine(_ navigationBar: UINavigationBar) {
         let img = UIImage()
         navigationBar.shadowImage = img

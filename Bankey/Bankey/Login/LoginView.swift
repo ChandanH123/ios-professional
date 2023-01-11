@@ -25,8 +25,9 @@ class LoginView: UIView
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override var intrinsicContentSize: CGSize {
+
+// It is used to set the default size of the view.
+//    override var intrinsicContentSize: CGSize { // this is used for storyboards (we don't need it)
 //        return CGSize(width: 200, height: 200)
 //    }
 }
@@ -53,8 +54,8 @@ extension LoginView {
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .secondarySystemFill
         
-        layer.cornerRadius = 5
-        clipsToBounds = true
+        layer.cornerRadius = 5 // It is used to set the corner radius of the view.
+        clipsToBounds = true // It is used to clip the bounds of the view.
     }
     func layout() {
         stackView.addArrangedSubview(usernameTextField)
@@ -71,7 +72,7 @@ extension LoginView {
             
         ])
         
-        dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true // It is used to set the height of the divider.
     }
 }
 

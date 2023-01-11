@@ -22,12 +22,15 @@ class AccountSummaryHeaderView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 144)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 144) // we are not defining the width here, only height is defined.
     }
     
     private func commonInit() {
         let bundle = Bundle(for: AccountSummaryHeaderView.self)
         bundle.loadNibNamed("AccountSummaryHeaderView", owner: self, options: nil)
+        /*  nib files are resource files, that's store the user interface information for  your iOS and macOS apps.
+            The fullform of nib is "NeXTSTEP Interface Builder"
+        */
         addSubview(contentView)
         contentView.backgroundColor = appColor
         
