@@ -5,7 +5,7 @@ This project is all about showing the data of various account types.
 
 ## Tech Stack
 
-**Client:** iOS, UiKit (no storyboards), Delegate-Protocol Pattern
+**Client:** iOS, UiKit (no storyboards), Delegate-Protocol Pattern, UITableView, UITableViewCell, UIPageViewController, UITabBarController, UINavigationController
 
 
 ## Screenshots
