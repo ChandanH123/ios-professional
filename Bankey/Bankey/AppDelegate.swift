@@ -38,9 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        window?.rootViewController = LoginViewController()
         //        window?.rootViewController = OnboardingContainerViewController()
         //        window?.rootViewController = OnboardingViewController(heroImageName: "delorean", titleText: "Bankey is faster, easier to use, and has a brand new look and feel that will make you feel like you are back in 1989.")
-        
+        // Step 2
+        registerForNotifications()
         displayLogin()
         return true
+    }
+    // Step 3
+    // For registering ourselves to NSNotification.
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
     }
     
     private func displayLogin() {
@@ -83,7 +89,8 @@ extension AppDelegate: OnboardingContainerViewControllerDelegate {
 }
 
 extension AppDelegate: LogoutDelegate {
-    func didLogout() {
+    // Step 4
+    @objc func didLogout() {
         setRootViewController(loginViewController)
     }
 }
