@@ -33,6 +33,18 @@ class LoginViewController: UIViewController {
         return loginView.passwordTextField.text
     }
     
+    // title animation
+    var leadingEdgeOnScreen: CGFloat = 16
+    var leadingEdgeOffScreen: CGFloat = -1000
+    
+    var titleLeadingAnchor: NSLayoutConstraint?
+    
+    // subTitle animation
+    var trailingEdgeOnScreen: CGFloat = -16
+    var trailingEdgeOffScreen: CGFloat = 1000
+    
+    var subTitleTrailingAnchor: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,6 +55,11 @@ class LoginViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         signInButton.configuration?.showsActivityIndicator = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
     }
 }
 
@@ -67,6 +84,7 @@ extension LoginViewController {
         titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.text = "Bankey"
+        titleLabel.alpha = 0
 
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.textAlignment = .center
@@ -87,34 +105,39 @@ extension LoginViewController {
         
         //Constraints for Title.
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3), // 3 = 24pts.
+            titleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
-                
+        
+        titleLeadingAnchor = titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        titleLeadingAnchor?.isActive = true // If we set the constraints into NSLayoutConstraint.activate array then It is by default true but if we define the constraints outside the NSLayoutConstraint.activate array then we have to set isActive = true.
+        
        //Constraints for Subtitle.
         NSLayoutConstraint.activate([
-            subtitleLabel.widthAnchor.constraint(equalTo: loginView.widthAnchor),
+            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3), // 3 = 24pts.
+            // subtitleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3), // 3 = 24pts.
         ])
 
+        subTitleTrailingAnchor = subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailingEdgeOffScreen)
+        subTitleTrailingAnchor?.isActive = true // If we set the constraints into NSLayoutConstraint.activate array then It is by default true but if we define the constraints outside the NSLayoutConstraint.activate array then we have to set isActive = true.
         
         //Constraints for Login View.
         NSLayoutConstraint.activate([
             //Below line puts the subview in middle of the screen equal to view.
-            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            view.centerYAnchor.constraint(equalTo: loginView.centerYAnchor),
             
             //Below line is for pin the subview to left or leading side from view.
-            // loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1), // 1 = 8pts.
+            // loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2), // 2 = 16pts.
             //or
             //Below line is for pin the subview to left or leading side from view.
-            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
             
             //Below line is for pin the subview to right or trailing side from view.
-            // view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1), // 1 = 8pts.
+            // view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 2), // 2 = 16pts.
             // or
             //Below line is for pin the subview to right or trailing side from view.
-            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
         ])
         
@@ -182,5 +205,30 @@ extension LoginViewController {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message
         
+    }
+}
+
+extension LoginViewController {
+    private func animate() {
+        
+        let duration = 2.0
+        
+        let animator1 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            self.titleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        animator1.startAnimation()
+        
+        let animator2 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            self.subTitleTrailingAnchor?.constant = self.trailingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        animator2.startAnimation(afterDelay: 1)
+        
+        let animator3 = UIViewPropertyAnimator(duration: duration * 2, curve: .easeInOut) {
+            self.titleLabel.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        animator3.startAnimation(afterDelay: 1)
     }
 }
