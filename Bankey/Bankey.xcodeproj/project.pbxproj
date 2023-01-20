@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17271908297851C50042ADBA /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17271907297851C50042ADBA /* ShakeyBellView.swift */; };
 		177FC1B428B77313008EB347 /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177FC1B328B77313008EB347 /* AccountSummaryCell.swift */; };
 		17943C6928B50F8A009256E7 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17943C6828B50F8A009256E7 /* UIViewController+Utils.swift */; };
 		17943C6B28B5115D009256E7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17943C6A28B5115D009256E7 /* MainViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17271907297851C50042ADBA /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		177FC1B328B77313008EB347 /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
 		17943C6828B50F8A009256E7 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		17943C6A28B5115D009256E7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172719062978519B0042ADBA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				17271907297851C50042ADBA /* ShakeyBellView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		177FC1B128B772CF008EB347 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 				17DA297228B2422400B40434 /* Onboarding */,
 				17943C6C28B526D1009256E7 /* AccountSummary */,
 				17DA297928B28A5900B40434 /* Utils */,
+				172719062978519B0042ADBA /* Components */,
 				17A4BB0228A4070400A66016 /* Files */,
 			);
 			path = Bankey;
@@ -307,6 +318,7 @@
 				17F91273296DC97C00DD978D /* CurrencyFormatter.swift in Sources */,
 				17F9127B2973DB1400DD978D /* NSNotificationName.swift in Sources */,
 				17F91275296DCA0C00DD978D /* Decimal+Utils.swift in Sources */,
+				17271908297851C50042ADBA /* ShakeyBellView.swift in Sources */,
 				177FC1B428B77313008EB347 /* AccountSummaryCell.swift in Sources */,
 				17DA297628B25C5200B40434 /* OnboardingViewController.swift in Sources */,
 				17943C6B28B5115D009256E7 /* MainViewController.swift in Sources */,
