@@ -23,6 +23,8 @@
 		17DA297628B25C5200B40434 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DA297528B25C5200B40434 /* OnboardingViewController.swift */; };
 		17DA297828B2822500B40434 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DA297728B2822500B40434 /* DummyViewController.swift */; };
 		17DA297B28B28A6B00B40434 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DA297A28B28A6B00B40434 /* LocalState.swift */; };
+		17F4BF52297BF10D005518A0 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F4BF51297BF10D005518A0 /* Date+Utils.swift */; };
+		17F4BF54297BF282005518A0 /* AccountSumaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F4BF53297BF282005518A0 /* AccountSumaryViewController+Networking.swift */; };
 		17F91273296DC97C00DD978D /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F91272296DC97C00DD978D /* CurrencyFormatter.swift */; };
 		17F91275296DCA0C00DD978D /* Decimal+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F91274296DCA0C00DD978D /* Decimal+Utils.swift */; };
 		17F91277296E7E6300DD978D /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F91276296E7E6300DD978D /* CurrencyFormatterTests.swift */; };
@@ -61,6 +63,8 @@
 		17DA297528B25C5200B40434 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		17DA297728B2822500B40434 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		17DA297A28B28A6B00B40434 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
+		17F4BF51297BF10D005518A0 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		17F4BF53297BF282005518A0 /* AccountSumaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSumaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		17F91272296DC97C00DD978D /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		17F91274296DCA0C00DD978D /* Decimal+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Utils.swift"; sourceTree = "<group>"; };
 		17F91276296E7E6300DD978D /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				17943C6D28B526FC009256E7 /* AccountSummaryViewController.swift */,
+				17F4BF53297BF282005518A0 /* AccountSumaryViewController+Networking.swift */,
 				177FC1B128B772CF008EB347 /* Header */,
 				177FC1B228B772E9008EB347 /* Cells */,
 			);
@@ -202,6 +207,7 @@
 				17DA297A28B28A6B00B40434 /* LocalState.swift */,
 				17F91272296DC97C00DD978D /* CurrencyFormatter.swift */,
 				17F9127A2973DB1400DD978D /* NSNotificationName.swift */,
+				17F4BF51297BF10D005518A0 /* Date+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17943C6928B50F8A009256E7 /* UIViewController+Utils.swift in Sources */,
+				17F4BF52297BF10D005518A0 /* Date+Utils.swift in Sources */,
 				17A4BB0528A4078D00A66016 /* LoginView.swift in Sources */,
 				17DA297B28B28A6B00B40434 /* LocalState.swift in Sources */,
 				17943C7028B52A31009256E7 /* AccountSummaryHeaderView.swift in Sources */,
@@ -317,6 +324,7 @@
 				17A4BAF328A3F5B500A66016 /* LoginViewController.swift in Sources */,
 				17F91273296DC97C00DD978D /* CurrencyFormatter.swift in Sources */,
 				17F9127B2973DB1400DD978D /* NSNotificationName.swift in Sources */,
+				17F4BF54297BF282005518A0 /* AccountSumaryViewController+Networking.swift in Sources */,
 				17F91275296DCA0C00DD978D /* Decimal+Utils.swift in Sources */,
 				17271908297851C50042ADBA /* ShakeyBellView.swift in Sources */,
 				177FC1B428B77313008EB347 /* AccountSummaryCell.swift in Sources */,

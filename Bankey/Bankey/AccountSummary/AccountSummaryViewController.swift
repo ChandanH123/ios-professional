@@ -9,7 +9,14 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController {
     
-    var accounts: [AccountSummaryCell.ViewModel] = []
+    // Request Models
+    var profile: Profile?
+    var accounts: [Account] = []
+    
+    // View Models
+    var headerViewModel = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Welcome", name: "", date: Date())
+    
+    var accountsCellViewModels: [AccountSummaryCell.ViewModel] = []
     
     var headerView = AccountSummaryHeaderView(frame: .zero)
     
@@ -36,7 +43,8 @@ extension AccountSummaryViewController {
     private func setup() {
         setupTableView()
         setupTableHeaderView()
-        fetchData()
+        fetchAccounts()
+        fetchDataAndLoadViews()
     }
     
     private func setupTableView() {
@@ -62,7 +70,7 @@ extension AccountSummaryViewController {
     
     private func setupTableHeaderView() {
         
-        var size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize) // setthing the height of header.
+        var size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize) // setting the height of header.
         size.width = UIScreen.main.bounds.width // setting the width of header.
         headerView.frame.size = size
         
@@ -74,11 +82,11 @@ extension AccountSummaryViewController {
 extension AccountSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard !accounts.isEmpty else { return UITableViewCell() }
+        guard !accountsCellViewModels.isEmpty else { return UITableViewCell() }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.reuseID, for: indexPath) as! AccountSummaryCell
         
-        let account = accounts[indexPath.row]
+        let account = accountsCellViewModels[indexPath.row]
         
         cell.configure(with: account)
         
@@ -86,7 +94,7 @@ extension AccountSummaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts.count
+        return accountsCellViewModels.count
     }
 }
 
@@ -99,8 +107,39 @@ extension AccountSummaryViewController: UITableViewDelegate {
 
 // MARK: - Networking
 extension AccountSummaryViewController {
-    private func fetchData() {
-        fetchAccounts()
+    private func fetchDataAndLoadViews() {
+        fetchProfile(forUserId: "2") { result in
+            switch result {
+            case .success(let profile):
+                self.profile = profile
+                self.configureTableHeaderView(with: profile)
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        fetchAccounts(forUserId: "2") { result in
+            switch result {
+            case .success(let accounts):
+                self.accounts = accounts
+                self.configureTableCells(with: accounts)
+                self.tableView.reloadData()
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func configureTableHeaderView(with profile: Profile) {
+        let vm = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Good Morning!", name: profile.firstName + " " + profile.lastName, date: Date())
+        
+        headerView.configure(viewModel: vm)
+    }
+    
+    private func configureTableCells(with accounts: [Account]) {
+        accountsCellViewModels = accounts.map({ account in
+            AccountSummaryCell.ViewModel(accountType: account.type, accountName: account.name, balance: account.amount)
+        })
     }
     
     private func fetchAccounts() {
@@ -124,12 +163,12 @@ extension AccountSummaryViewController {
                                                        accountName: "Growth Fund",
                                                        balance: 15000.00)
         
-        accounts.append(savings)
-        accounts.append(chequing)
-        accounts.append(visa)
-        accounts.append(masterCard)
-        accounts.append(investment1)
-        accounts.append(investment2)
+        accountsCellViewModels.append(savings)
+        accountsCellViewModels.append(chequing)
+        accountsCellViewModels.append(visa)
+        accountsCellViewModels.append(masterCard)
+        accountsCellViewModels.append(investment1)
+        accountsCellViewModels.append(investment2)
     }
     
     
