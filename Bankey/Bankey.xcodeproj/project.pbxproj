@@ -25,6 +25,8 @@
 		17DA297B28B28A6B00B40434 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DA297A28B28A6B00B40434 /* LocalState.swift */; };
 		17F4BF52297BF10D005518A0 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F4BF51297BF10D005518A0 /* Date+Utils.swift */; };
 		17F4BF54297BF282005518A0 /* AccountSumaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F4BF53297BF282005518A0 /* AccountSumaryViewController+Networking.swift */; };
+		17F4BF58297C1BC0005518A0 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F4BF57297C1BC0005518A0 /* ProfileTests.swift */; };
+		17F4BF5A297C2012005518A0 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F4BF59297C2012005518A0 /* AccountTests.swift */; };
 		17F91273296DC97C00DD978D /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F91272296DC97C00DD978D /* CurrencyFormatter.swift */; };
 		17F91275296DCA0C00DD978D /* Decimal+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F91274296DCA0C00DD978D /* Decimal+Utils.swift */; };
 		17F91277296E7E6300DD978D /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F91276296E7E6300DD978D /* CurrencyFormatterTests.swift */; };
@@ -65,6 +67,8 @@
 		17DA297A28B28A6B00B40434 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		17F4BF51297BF10D005518A0 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		17F4BF53297BF282005518A0 /* AccountSumaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSumaryViewController+Networking.swift"; sourceTree = "<group>"; };
+		17F4BF57297C1BC0005518A0 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		17F4BF59297C2012005518A0 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		17F91272296DC97C00DD978D /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		17F91274296DCA0C00DD978D /* Decimal+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Utils.swift"; sourceTree = "<group>"; };
 		17F91276296E7E6300DD978D /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
@@ -183,7 +187,7 @@
 		17C7FEDF28CCC4C300BBA954 /* BankeyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				17F91276296E7E6300DD978D /* CurrencyFormatterTests.swift */,
+				17F4BF55297C1B99005518A0 /* Utils */,
 				17F91278296E84F500DD978D /* LoginViewControllerTests.swift */,
 			);
 			path = BankeyUnitTests;
@@ -210,6 +214,24 @@
 				17F4BF51297BF10D005518A0 /* Date+Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		17F4BF55297C1B99005518A0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				17F4BF56297C1BA6005518A0 /* AccountSummary */,
+				17F91276296E7E6300DD978D /* CurrencyFormatterTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		17F4BF56297C1BA6005518A0 /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				17F4BF57297C1BC0005518A0 /* ProfileTests.swift */,
+				17F4BF59297C2012005518A0 /* AccountTests.swift */,
+			);
+			path = AccountSummary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +362,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17F4BF58297C1BC0005518A0 /* ProfileTests.swift in Sources */,
+				17F4BF5A297C2012005518A0 /* AccountTests.swift in Sources */,
 				17F91279296E84F500DD978D /* LoginViewControllerTests.swift in Sources */,
 				17F91277296E7E6300DD978D /* CurrencyFormatterTests.swift in Sources */,
 			);
